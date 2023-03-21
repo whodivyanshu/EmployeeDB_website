@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import ListGroup from 'react-bootstrap/ListGroup';
 
-function Pop(props) {
+
+export function Pop(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -16,7 +18,6 @@ function Pop(props) {
   const [address, setAddress] = useState("");
   const [department, setDepartment] = useState("");
   const [status, setStatus] = useState("");
-
 
   async function submitForm(e) {
     e.preventDefault();
@@ -99,4 +100,60 @@ function Pop(props) {
     </>
   );
 }
-export default Pop;
+
+
+export function Information(props){
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+    // window.location.reload(false);
+  }
+  const handleShow = () => setShow(true);
+
+
+  
+  return (
+    <>
+    <Button variant="outline-info" onClick={handleShow} id={props.id} className={props.class}>
+        {props.name}
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title>{props.name}</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Body>
+        <ListGroup as="ul">
+      <ListGroup.Item as="li" active>
+        Employee Information
+      </ListGroup.Item>
+      <label htmlFor="Name">Name:</label>
+      <ListGroup.Item as="li" className="Name">{props.name}</ListGroup.Item>
+      <label htmlFor="Age">Age:</label>
+      <ListGroup.Item as="li" className="Age">{props.age}</ListGroup.Item>
+      <label htmlFor="Address">Address:</label>
+      <ListGroup.Item as="li" className="Address">{props.address}</ListGroup.Item>
+      <label htmlFor="Department">Department:</label>
+      <ListGroup.Item as="li" className="Department">{props.department}</ListGroup.Item>
+      <label htmlFor="Status">Status:</label>
+      <ListGroup.Item as="li" className="Status">{props.status}</ListGroup.Item>
+
+
+    </ListGroup>
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  )
+}
+
+
+
+
+
+

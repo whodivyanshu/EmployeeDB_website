@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import { setData } from "./Data";
 import Data from "./Data";
-import Pop from "./Pop";
+import {Pop, Information} from "./Pop";
 // import GridData from "./GridData";
 function Main() {
 
@@ -24,8 +24,12 @@ function Main() {
   },[]);
 
     const dataaa  = Data.map(dataa => 
-    <Pop 
-    namee={dataa.name}
+    <Information
+    name={dataa.name}
+    age={dataa.age}
+    address={dataa.address}
+    department={dataa.department}
+    status={dataa.status}
     class="btnn"
     />
     )
