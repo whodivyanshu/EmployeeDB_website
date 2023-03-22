@@ -103,13 +103,16 @@ export function Pop(props) {
 
 
 export function Information(props){
+
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
+    // Pop().handleClose();
     // window.location.reload(false);
   }
-  const handleShow = () => setShow(true);
-
+  const handleShow = () =>{
+   setShow(true);
+  }
 
   
   return (
@@ -128,7 +131,7 @@ export function Information(props){
         Employee Information
       </ListGroup.Item>
       <label htmlFor="Name">Name:</label>
-      <ListGroup.Item as="li" className="Name">{props.name}</ListGroup.Item>
+      <ListGroup.Item as="li" className="Name" >{props.name}</ListGroup.Item>
       <label htmlFor="Age">Age:</label>
       <ListGroup.Item as="li" className="Age">{props.age}</ListGroup.Item>
       <label htmlFor="Address">Address:</label>
@@ -143,6 +146,7 @@ export function Information(props){
 
         </Modal.Body>
         <Modal.Footer>
+        <Update namee="Update" name="Update the Information"  />
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
@@ -152,8 +156,89 @@ export function Information(props){
   )
 }
 
+export function Update(props){
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload(false);
+  }
+  const handleShow = () => setShow(true);
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [address, setAddress] = useState("");
+  const [department, setDepartment] = useState("");
+  const [status, setStatus] = useState("");
 
 
 
+  async function submitForm(e){
 
+  }
+
+
+
+  return (
+    <>
+    <Button variant="outline-info" onClick={handleShow}>
+        {props.namee}
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{props.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={submitForm}>
+            <input
+              value={name}
+              autoComplete="off"
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              placeholder="Name"
+            />
+
+            <input
+              autoComplete="off"
+              type="number"
+              placeholder="Age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
+
+            <input
+              autoComplete="off"
+              type="text"
+              placeholder="Address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+            <input
+              autoComplete="off"
+              type="text"
+              placeholder="Department"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+            />
+            <input
+              autoComplete="off"
+              type="text"
+              placeholder="Status"
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            />
+
+            <input type="submit" value="Submit" className="btn" onClick={handleClose}  />
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    
+    </>
+  )
+}
 

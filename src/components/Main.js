@@ -25,6 +25,7 @@ function Main() {
 
     const dataaa  = Data.map(dataa => 
     <Information
+    id={dataa.id}
     name={dataa.name}
     age={dataa.age}
     address={dataa.address}
