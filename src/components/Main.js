@@ -1,31 +1,64 @@
 // Main.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import { setData } from "./Data";
 import Data from "./Data";
-import {Pop, Information} from "./Pop";
-// import GridData from "./GridData";
-function Main() {
+import Pop from "./Pop";
+import Information from "./Information";
+import State from "./Status";
+// import {ArrayContext} from 
+ function Main() {
 
+  
+  
+
+  
   
   const [data,setData] = useState([])
   
   useEffect(() => {
     axios.get("http://127.0.0.1:2000/getData").then((response) => {
       setData(response.data.data);
-      //   console.log(response.data.data);
+      
+        // console.log(response.data.data);
       for (let i = 0; i < response.data.data.length; i++) {
-        Data[i] = response.data.data[i];
-        
+        Data[i] = response.data.data[i];   
+        State[i] = response.data.data[i].status;
       }
+       const countMap = State.reduce((map, item) => {
+        map[item] = map[item] ? map[item] + 1 : 1;
+        return map;
+      }, {});
+  
+      const pieData = Object.keys(countMap).map(key => ({
+        label: key,
+        value: countMap[key],
+      }));
+  
+  
+      console.log(countMap);
+      console.log(pieData);
+      console.log(data);
+      
     });
-    console.log(data);
-    // eslint-disable-next-line
+
+     // eslint-disable-next-line
   },[]);
+  
+
+
+
+
+
+  const Status = [];
+  for (let i = 0; i < Data.length; i++) {
+    Status[i] = Data[i].status;
+    
+  }
 
     const dataaa  = Data.map(dataa => 
     <Information
-    id={dataa.id}
+    key={dataa._id2}
+    id={dataa._id}
     name={dataa.name}
     age={dataa.age}
     address={dataa.address}
@@ -41,7 +74,7 @@ function Main() {
         {dataaa}
         
       </div>
-      <Pop id="fixedbtn" namee="Add" />
+      <Pop id="fixedbtn" namee="Add" name="Information" />
     </div>
   );
 }

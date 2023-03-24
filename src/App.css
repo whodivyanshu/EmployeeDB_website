@@ -13,7 +13,7 @@ header{
 .grid-container{
   display: grid;
   grid-template-columns: auto auto auto auto;
-  text-align: center;
+  /* text-align: center; */
   /* height: 900px; */
 }
 button{
@@ -21,6 +21,38 @@ button{
 }
 .btnn{
   height: 90px;
+}
+.chartbody{
+  display: flex;
+}
+.chartleft{
+  width: 50%;
+}
+.chartright{
+  width: 50%;
+}
+.dashboard{
+  background-color: #3c73ff;
+  position: fixed;
+  right: 20px;
+  top: 40px;
+  border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+}
+.app{
+  margin: auto;
+
+}
+/* form{
+  text-align: center;
+} */
+
+.btn{
+
+  background-color: #3c73ff;
+  color: #3c73ff;
 }
 #fixedbtn{
   background-color: aqua;

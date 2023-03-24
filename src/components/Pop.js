@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import ListGroup from 'react-bootstrap/ListGroup';
 
 
-export function Pop(props) {
+
+export default function Pop(props) {
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
     window.location.reload(false);
+    // window.location.reload(false);
   }
   const handleShow = () => setShow(true);
   const [name, setName] = useState("");
@@ -18,6 +20,7 @@ export function Pop(props) {
   const [address, setAddress] = useState("");
   const [department, setDepartment] = useState("");
   const [status, setStatus] = useState("");
+  
 
   async function submitForm(e) {
     e.preventDefault();
@@ -40,7 +43,7 @@ export function Pop(props) {
 
   return (
     <>
-      <Button variant="outline-info" onClick={handleShow} id={props.id} className={props.class}>
+      <Button variant="outline-info" onClick={handleShow} id="fixedbtn">
         {props.namee}
       </Button>
 
@@ -49,52 +52,69 @@ export function Pop(props) {
           <Modal.Title>{props.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={submitForm}>
+        <Form onSubmit={submitForm}>
+          <label htmlFor="name">Name:</label>
+
             <input
+            id="name"
               value={name}
               autoComplete="off"
               onChange={(e) => setName(e.target.value)}
               type="text"
               placeholder="Name"
-            />
+              />
+              <br />
 
+          <label htmlFor="age">Age:</label>
             <input
+              id="age"
               autoComplete="off"
               type="number"
               placeholder="Age"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-            />
+              />
+              <br />
+        <label htmlFor="address">Address:</label>
 
             <input
+            id="address"
               autoComplete="off"
               type="text"
               placeholder="Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-            />
+              />
+              <br />
+
+              <label htmlFor="department">Department:</label>
             <input
+            id="department"
               autoComplete="off"
               type="text"
               placeholder="Department"
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
-            />
-            <input
-              autoComplete="off"
-              type="text"
-              placeholder="Status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            />
+              />
+              <br />
 
-            <input type="submit" value="Submit" className="btn" onClick={handleClose}  />
-          </Form>
+              <label htmlFor="status">Status:</label>
+              <select name="cars" id="status" onChange={(e) => setStatus(e.target.value)} value={status} type="text" style={{width: "190px", height: "30px"}}>
+              <option value="volvo">Select</option>
+              <option value="Remote Locations">Remote Locations</option>
+              <option value="Contract Employee">Contract Employee</option>
+              <option value="Full-Time">Full-Time</option>
+            </select>
+            <br />
+
+            <input type="submit" value="Submit" className="btn" onClick={handleClose} style={{backgroundColor: "#3c73ff"}}  />
+             </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
+
         </Modal.Footer>
       </Modal>
     </>
@@ -102,143 +122,5 @@ export function Pop(props) {
 }
 
 
-export function Information(props){
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => {
-    setShow(false);
-    // Pop().handleClose();
-    // window.location.reload(false);
-  }
-  const handleShow = () =>{
-   setShow(true);
-  }
-
-  
-  return (
-    <>
-    <Button variant="outline-info" onClick={handleShow} id={props.id} className={props.class}>
-        {props.name}
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        {/* <Modal.Header closeButton>
-          <Modal.Title>{props.name}</Modal.Title>
-        </Modal.Header> */}
-        <Modal.Body>
-        <ListGroup as="ul">
-      <ListGroup.Item as="li" active>
-        Employee Information
-      </ListGroup.Item>
-      <label htmlFor="Name">Name:</label>
-      <ListGroup.Item as="li" className="Name" >{props.name}</ListGroup.Item>
-      <label htmlFor="Age">Age:</label>
-      <ListGroup.Item as="li" className="Age">{props.age}</ListGroup.Item>
-      <label htmlFor="Address">Address:</label>
-      <ListGroup.Item as="li" className="Address">{props.address}</ListGroup.Item>
-      <label htmlFor="Department">Department:</label>
-      <ListGroup.Item as="li" className="Department">{props.department}</ListGroup.Item>
-      <label htmlFor="Status">Status:</label>
-      <ListGroup.Item as="li" className="Status">{props.status}</ListGroup.Item>
-
-
-    </ListGroup>
-
-        </Modal.Body>
-        <Modal.Footer>
-        <Update namee="Update" name="Update the Information"  />
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  )
-}
-
-export function Update(props){
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => {
-    setShow(false);
-    window.location.reload(false);
-  }
-  const handleShow = () => setShow(true);
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [address, setAddress] = useState("");
-  const [department, setDepartment] = useState("");
-  const [status, setStatus] = useState("");
-
-
-
-  async function submitForm(e){
-
-  }
-
-
-
-  return (
-    <>
-    <Button variant="outline-info" onClick={handleShow}>
-        {props.namee}
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{props.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={submitForm}>
-            <input
-              value={name}
-              autoComplete="off"
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-              placeholder="Name"
-            />
-
-            <input
-              autoComplete="off"
-              type="number"
-              placeholder="Age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-
-            <input
-              autoComplete="off"
-              type="text"
-              placeholder="Address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-            <input
-              autoComplete="off"
-              type="text"
-              placeholder="Department"
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-            />
-            <input
-              autoComplete="off"
-              type="text"
-              placeholder="Status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            />
-
-            <input type="submit" value="Submit" className="btn" onClick={handleClose}  />
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    
-    </>
-  )
-}
 
