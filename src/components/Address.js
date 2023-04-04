@@ -3,7 +3,6 @@ import Map, { NavigationControl, Marker } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { PieChart, Pie } from 'recharts';
 
 function App(props) {
   const [latitude, setLatitude] = React.useState(null);
@@ -15,6 +14,7 @@ function App(props) {
     { label: 'C', value: 10, type: 'type1' },
     { label: 'D', value: 40, type: 'type3' },
   ];
+  console.log(datta);
 
   const address = props.addd;
   const apiKey = '386658c6df27471d8f9b9fd7e7e26045';
