@@ -16,7 +16,7 @@ import State from "./Status";
   const [data,setData] = useState([])
   
   useEffect(() => {
-    axios.get("http://127.0.0.1:2000/getData").then((response) => {
+    axios.get("https://tan-bream-tam.cyclic.app/getData").then((response) => {
       setData(response.data.data);
       
         // console.log(response.data.data);
