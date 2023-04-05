@@ -20,7 +20,7 @@ function Information(props) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const response = await fetch(`http://127.0.0.1:2000/api/update/${props.id}`, {
+    const response = await fetch(`https://tan-bream-tam.cyclic.app/update/${props.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ function Information(props) {
   }
 
   async function handleDelete() {
-    const response = await fetch(`http://127.0.0.1:2000/api/delete/${props.id}`, {
+    const response = await fetch(`https://tan-bream-tam.cyclic.app/delete/${props.id}`, {
       method: "DELETE",
     });
 

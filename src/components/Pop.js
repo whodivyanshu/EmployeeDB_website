@@ -24,7 +24,7 @@ export default function Pop(props) {
 
   async function submitForm(e) {
     e.preventDefault();
-    const response = await fetch("https://tan-bream-tam.cyclic.app/getData", {
+    const response = await fetch("https://tan-bream-tam.cyclic.app/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
