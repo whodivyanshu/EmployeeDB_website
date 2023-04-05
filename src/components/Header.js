@@ -13,7 +13,7 @@ function Header() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:2000/getData').then((response) => {
+    axios.get('https://tan-bream-tam.cyclic.app/getData').then((response) => {
       for (let i = 0; i < response.data.data.length; i++) {
         State[i] = response.data.data[i].status;
       }
